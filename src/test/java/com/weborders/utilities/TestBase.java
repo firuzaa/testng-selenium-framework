@@ -21,7 +21,7 @@ public abstract class TestBase {
     protected static ExtentTest extentLogger;
 
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setupMethod() {
         driver = Driver.getDriver();
         pages = new Pages();
@@ -29,7 +29,7 @@ public abstract class TestBase {
         driver.get(ConfigurationReader.getProperty("url"));
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDownMethod(ITestResult result) throws IOException {
         // if any test fails, it can detect it,
         // take a screen shot at the point and attach to report
@@ -45,7 +45,7 @@ public abstract class TestBase {
         Driver.closeDriver();
     }
 
-    @BeforeTest
+    @BeforeTest(alwaysRun = true)
     public void setUpTest() {
         report = new ExtentReports();
         // this is our custom location of the report that will be generated
@@ -75,16 +75,7 @@ public abstract class TestBase {
 
     }
 
-
-
-
-
-
-
-
-
-
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void tearDownTest() {
         report.flush();
     }

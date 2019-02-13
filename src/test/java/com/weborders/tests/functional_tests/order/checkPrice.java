@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class checkPrice extends TestBase {
 
-    @Test
+    @Test(groups = "regression")
     public void unitPriceTest() throws InterruptedException {
         extentLogger = report.createTest("Unit price test");
         extentLogger.info("Logging in to the application");
